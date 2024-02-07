@@ -6,6 +6,9 @@ Refining Pre-Trained Motion Models\
 Xinglong Sun, Adam W. Harley, Leonidas J. Guibas
 
 Arxiv Link: https://arxiv.org/pdf/2401.00850.pdf
+
+Project Website: https://alexsunnik.github.io/refining-motion/
+
 ## Introduction
 Given the difficulty of manually annotating motion in video, the current best motion estimation methods are trained with synthetic data, 
 and therefore struggle somewhat due to a train/test gap. Self-supervised methods hold the promise of training directly on real video, 
@@ -18,7 +21,7 @@ which suggests that the benefit of seeing the new data is overshadowed by the no
 In the first stage, we use the pre-trained model to estimate motion in a video, and then select the subset of motion estimates which we can verify with cycle-consistency. 
 This produces a sparse but accurate pseudo-labelling of the video. In the second stage, we fine-tune the model to reproduce these outputs, 
 while also applying augmentations on the input. We complement this boot-strapping method with simple techniques that densify and re-balance the pseudo-labels, 
-ensuring that we do not merely train on ``easy'' tracks. We show that our method yields reliable gains over fully-supervised methods in real videos, 
+ensuring that we do not merely train on "easy" tracks. We show that our method yields reliable gains over fully-supervised methods in real videos, 
 for both short-term (flow-based) and long-range (multi-frame) pixel tracking. 
 
 <div align="center">
@@ -26,56 +29,48 @@ for both short-term (flow-based) and long-range (multi-frame) pixel tracking.
   Overview of our method.
 </div>
 
-## Results on KITTI
+## Some Results
 <div align="center">
-  <img src="Figs/result.png" width="100%">
-  KITTI Depth Completion Results.
+  <img src="Figs/final_raftall.png" width="100%">
+  Percent change in EPE after our refinement for each video in the MPI Sintel dataset compared with the pretrained RAFT model. Negative value denotes improvement (i.e., error decreasing)
 </div>
-Link to our public results on KITTI test server:
 
-https://www.cvlibs.net/datasets/kitti/eval_depth_detail.php?benchmark=depth_completion&result=c00c3b4d967f78cb9e1522ebd062f763b7668f7d
+<div align="center">
+  <img src="Figs/davis_final.png" width="100%">
+  Performance change in δ after our refinement for each of the video in the TapVid-DAVIS dataset compared with the baseline pretrained PIPs model. Positive value denotes improvement (i.e., accuracy increasing)
+</div>
+
 
 ## Some Visualizations
 <div align="center">
-  <img src="Figs/viz1.png" width="100%">
-  From left to right: groundtruth dense depth map, guidance RGB image, inference from our model, and inference from PENet.
+  <img src="Figs/r3.gif" width="100%">
+Tracking a point on the dog, original tracker is stuck on the standing person whereas our refinment corrects this mistake.
 </div>
 
 <div align="center">
-  <img src="Figs/viz2.png" width="100%">
-  From left to right: groundtruth dense depth map, guidance RGB image, inference from our model, and inference from PENet.
+  <img src="Figs/draw1_correct.png" width="100%">
+Our approach refines the optical flows by completing missing objects and cleaning noisy tracks.
 </div>
 
 ## Prerequisites
 ### Datasets
-Please follow the KITTI depth completion dataset downloading instruction here:
 
-https://www.cvlibs.net/datasets/kitti/eval_depth.php?benchmark=depth_completion
-
-## Train
-To train the baseline/unpruned network, run:
-```
-python3 train.py
-```
-As mentioned in our paper, we study our deformable refinement module on top of the model backbone based on ENet from the paper PENet (https://arxiv.org/pdf/2103.00783.pdf). For faster convergence of ReDC, you could download the pretrained PENet model from here:
-https://drive.google.com/file/d/1RDdKlKJcas-G5OA49x8OoqcUDiYYZgeM/view?usp=sharing
-
-In train.py, we extract the backbone weights from PENet and initialize the backbone used in ReDC.
+## FineTune
 
 ### Pretrained Models
-We also release our pretrained model here: 
-https://drive.google.com/file/d/1wE8QLI_fCpGVLKqhqBf5Wg8A08eHJDfv/view?usp=sharing
 
 ## Acknowledgement
 Some dataloading and evaluation code is from:
-https://github.com/JUGGHM/PENet_ICRA2021
+https://github.com/google-deepmind/tapnet and
+https://github.com/aharley/pips
 
 ## Citations
 If you find this repo useful to your project or research, please cite our paper below:
 
-@inproceedings{sun2023revisiting,\
-  title={Revisiting deformable convolution for depth completion},\
-  author={Sun, X and Ponce, J and Wang, Y-X},\
-  booktitle={IEEE/RSJ International Conference on Intelligent Robots and Systems},\
-  year={2023}\
+@article{sun2024refining,\
+    title={Refining pre-trained motion models},\
+    author={Sun, Xinglong and Harley, Adam W and Guibas, Leonidas J},\
+    journal={arXiv preprint arXiv:2401.00850},\
+    year={2024}\
 }
+
