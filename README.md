@@ -43,7 +43,7 @@ for both short-term (flow-based) and long-range (multi-frame) pixel tracking.
 
 ## Some Visualizations
 <div align="center">
-  <img src="Figs/r3.gif" width="100%">
+  <img src="Figs/r3a.gif" width="100%">
 Tracking a point on the dog, original tracker is stuck on the standing person whereas our refinment corrects this mistake.
 </div>
 
