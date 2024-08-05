@@ -52,12 +52,17 @@ Tracking a point on the dog, original tracker is stuck on the standing person wh
 Our approach refines the optical flows by completing missing objects and cleaning noisy tracks.
 </div>
 
-## Prerequisites
-### Datasets
+## Instructions
 
-## FineTune
+### Step 1
+Download the pretrained PIPs checkpoint here:
+https://drive.google.com/file/d/1hCaTcXjIU44LMmvTcuqrrD_zKZNa2W8G/view?usp=drive_link
 
-### Pretrained Models
+and put it inside "./reference_model/"
+
+### Step 2
+Follow the README instructions in the dataset folder you are interested in.
+
 
 ## Acknowledgement
 Some dataloading and evaluation code is from:
