@@ -35,11 +35,15 @@ python3 finetune_horse10.py --horse10_path [HORSE10_DATASET_DIR] --pseudo_labels
 ```
 AGGREGATED_DATA_PATH: name of the aggregated data pickle file, default is all_horse_data.pkl
 
+Validation will be conducted every 500 iterations, and the first validation happening at the 0th iteration basically indicates how the pretrained baseline model performs.
+
 We also release our finetuned model at the 3500th iterations here:
 https://drive.google.com/file/d/1gxsrtzT7HQoaUmHAAbywb5ugFI9XpaTg/view?usp=drive_link
 
-### 3. Evaluate baseline or our finetuned model
-Perform standalone evaluation of our finetuned/pretrained models.
+### 3. Evaluate baseline or finetuned model (Optional)
+Above finetuning script periodically perform validation. 
+
+However, to perform standalone evaluation of finetuned/pretrained models.
 ```
 python3 eval_pips_horse10.py --horse10_path [HORSE10_DATASET_DIR] --checkpoint_path [CHECKPOINT_TO_EVAL]
 ```

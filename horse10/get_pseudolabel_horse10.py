@@ -68,6 +68,12 @@ def run_model(model, rgbs, points, sw, video_name="test", CycleConsty=None, save
     window_size = WINDOW_SIZE
     thresh = THRESH
 
+    folder_name = f'data{thresh}'
+    # Check if the folder exists
+    if not os.path.exists(folder_name):
+        # Create the folder if it doesn't exist
+        os.makedirs(folder_name)
+    
     save_name = f'data{thresh}/{video_name}_{int(all_idx[0])}.pkl'
     if os.path.isfile(save_name):
         return

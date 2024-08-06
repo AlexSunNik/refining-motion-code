@@ -400,8 +400,7 @@ def main(
             sample = next(train_iterloader)
             # sample, returned_early = prep_sample(sample, N, S_stride, req_occlusion)
 
-        # if global_step % VAL_FREQ == 0 and global_step != 0:
-        if global_step % VAL_FREQ == 0 or global_step == 0:
+        if global_step % VAL_FREQ == 0:
             print("save model")
             save_name = f"horsemodel_iter{global_step}.pt"
             torch.save(model.state_dict(), save_name)
