@@ -60,6 +60,10 @@ https://drive.google.com/file/d/1hCaTcXjIU44LMmvTcuqrrD_zKZNa2W8G/view?usp=drive
 
 and put it inside "./reference_model/"
 
+Download raft-things.pth in https://drive.google.com/drive/folders/1sWDsfuZ3Up38EUQt7-JDTT1HcGHuJgvT 
+
+and put it inside "./reference_model/"
+
 ### Step 2
 Follow the README instructions in the dataset folder you are interested in.
 
